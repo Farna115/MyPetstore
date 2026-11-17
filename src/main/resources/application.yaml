@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: MyPetStore-SSM
+  profiles:
+    # 未显式指定激活环境时，默认加载 application-dev.yaml
+    default: dev

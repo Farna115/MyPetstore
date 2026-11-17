@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/MyPetStore?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    # 从环境变量 DB_PASSWORD 读取
+    password: ${DB_PASSWORD:}
+    hikari:
+      # 每个新连接建立后执行，将会话时区固定为东八区
+      connection-init-sql: SET time_zone='+08:00'
+  sql:
+    init:
+      # 应用启动不自动执行 schema.sql / data.sql，不建表或导入数据
+      mode: never

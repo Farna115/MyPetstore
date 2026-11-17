@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户演示</title>
+</head>
+<body>
+<h1 th:text="${message}">消息占位</h1>
+
+<!-- 查到用户时展示五项信息（UserReadResult 本身不含密码字段） -->
+<table th:if="${user != null}" border="1" cellpadding="6">
+    <tr><td>id</td><td th:text="${user.id}"></td></tr>
+    <tr><td>username</td><td th:text="${user.username}"></td></tr>
+    <tr><td>displayName</td><td th:text="${user.displayName}"></td></tr>
+    <tr><td>role</td><td th:text="${user.role}"></td></tr>
+    <tr><td>status</td><td th:text="${user.status}"></td></tr>
+</table>
+
+<!-- GET 查询表单，输入框回显当前查询的用户名 -->
+<form method="get" th:action="@{/demo/user/page}">
+    <label>username：
+        <input type="text" name="username" th:value="${username}">
+    </label>
+    <button type="submit">查询</button>
+</form>
+
+<!-- 快速切换链接，地址由 Thymeleaf @{} 表达式生成（自动带上下文路径并转义参数） -->
+<p>
+    <a th:href="@{/demo/user/page(username='alice')}">alice</a> |
+    <a th:href="@{/demo/user/page(username='bob')}">bob</a>
+</p>
+
+</body>
+</html>
