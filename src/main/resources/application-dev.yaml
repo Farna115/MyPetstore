@@ -12,3 +12,8 @@ spring:
     init:
       # 应用启动不自动执行 schema.sql / data.sql，不建表或导入数据
       mode: never
+
+logging:
+  level:
+    # 将 Mapper 包设为 debug，运行时打印 MyBatis-Plus 生成的 SQL、参数与返回行数
+    org.csu.mypetstore.mapper: debug
